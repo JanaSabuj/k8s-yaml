@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod1
+  namespace: ns-sabuj
+  labels:
+     app: nginx
+spec:
+  containers:
+  - name: nginx-demo
+    image: nginx:alpine
+    ports:
+    - containerPort: 80
