@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: nginx-parallel
+spec:
+  completions: 10 # total 10 jobs
+  parallelism: 2 # 2 pods will be deployed parallely
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: job-parallel
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:alpine
+        command: ["/bin/sh"]
+        args: ["-c", "echo Hello World"]
+      restartPolicy: OnFailure

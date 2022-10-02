@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cron-job-demo
+  labels:
+    app: job-cron
+spec:
+  schedule: "54 18 * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: cj
+        spec:
+          containers:
+          - name: demo
+            image: nginx:alpine
+            command: ["/bin/sh"]
+            args: ["-c", "echo Time is 6 45 PM"]
+          restartPolicy: OnFailure
