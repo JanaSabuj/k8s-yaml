@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: EndPoints
+metadata:
+  name: my-service
+subsets:
+  - addresses:
+      - ip: 192.0.2.4
+    ports:
+      - port: 9376
